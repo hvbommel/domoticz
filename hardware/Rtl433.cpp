@@ -369,7 +369,7 @@ bool CRtl433::ParseData(std::map<std::string, std::string>& data)
 
 		if (FindField(data, "cmd"))
 		{
-			bOn = data["cmd"] == 14;
+			bool bOn = data["cmd"] == 14;
 			unsigned int switchidx = (id & 0xfffffff) | ((channel & 0xf) << 28);
 			SendSwitch(switchidx,
 				(const uint8_t)unit,
