@@ -364,6 +364,22 @@ bool CRtl433::ParseData(std::map<std::string, std::string>& data)
 		}
 	}
 
+	if (model == "Generic-Remote") {
+		// prevent "Unhandled sensor reading" logging
+
+		if (FindField(data, "cmd"))
+		{
+			bOn = data["cmd"] == 14;
+			unsigned int switchidx = (id & 0xfffffff) | ((channel & 0xf) << 28);
+			SendSwitch(switchidx,
+				(const uint8_t)unit,
+				batterylevel,
+				bOn,
+				0, model, m_Name, snr);
+		}
+		bDone = true; 
+	}
+
 	if (bDone)
 		return true;
 
