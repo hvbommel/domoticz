@@ -368,7 +368,7 @@ bool CRtl433::ParseData(std::map<std::string, std::string>& data)
 		// prevent "Unhandled sensor reading" logging
 
 		if (FindField(data, "cmd")) {
-			uint8_t cmd = atoi(data["moisture"].c_str());
+			uint8_t cmd = atoi(data["cmd"].c_str());
 			bool bOn = (cmd == 14);
 			unsigned int switchidx = (id & 0xfffffff) | ((channel & 0xf) << 28);
 			SendSwitch(switchidx,
