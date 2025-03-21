@@ -370,7 +370,7 @@ bool CRtl433::ParseData(std::map<std::string, std::string>& data)
 		if (FindField(data, "cmd")) {
 			uint8_t cmd = atoi(data["cmd"].c_str());
 			bool bOn = (cmd == 14);
-			Log(LOG_STATUS, "[Rtl433] Generic-Remote - cmd(%d) bOn(%d)) sinsoridx(%d)", cmd, bOn, sensoridx);
+			Log(LOG_STATUS, "[Rtl433] Generic-Remote - cmd(%d) bOn(%d)", cmd, bOn);
 		}
 
 		Log(LOG_STATUS, "[Rtl433] Generic-Remote");
