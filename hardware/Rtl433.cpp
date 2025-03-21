@@ -376,6 +376,12 @@ bool CRtl433::ParseData(std::map<std::string, std::string>& data)
 				batterylevel,
 				bOn,
 				0, model, m_Name, snr);
+
+				std::string line = "{\"Generic-Remote\", \"cmd\" : cmd, \"bOn\" : bOn}";
+				if (!ParseJsonLine(line))
+				{
+					Log(LOG_STATUS, "!!! HvB debug !!!: (%s)", line.c_str());
+				}
 		}
 		bDone = true; 
 	}
